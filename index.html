@@ -1,82 +1,456 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Professional German Teacher</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <header>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional German Teacher | Reema Castillo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
       <h1>Reema Castillo</h1>
       <p>Certified German Teacher | Grünes Diplom</p>
-    </header>
+    </div>
+  </header>
 
-    <nav>
+  <nav>
+    <div class="nav-container">
       <a href="#about">About Me</a>
       <a href="#services">Lessons</a>
+      <a href="#register" class="nav-cta">Book a Lesson / Register</a>
       <a href="#contact">Contact</a>
-    </nav>
+    </div>
+  </nav>
 
-    <div class="container">
-      <section id="about">
-        <h2>About Me</h2>
-        <p>
-          Welcome! I am a passionate and certified German language instructor
-          with a focus on helping students achieve fluency naturally and
-          effectively. Whether you are learning for personal interest, academic
-          purposes, or planning a trip, I tailor my teaching approach to suit
-          your individual learning style and pace.
-        </p>
-      </section>
-
-      <section id="services">
-        <h2>Language Lessons</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <h3>Beginner (A1 - A2)</h3>
-            <p>
-              Build a strong foundation in grammar, essential vocabulary, and
-              everyday conversational skills.
-            </p>
-          </div>
-          <div class="service-card">
-            <h3>Intermediate (B1)</h3>
-            <p>
-              Enhance your fluency, master complex sentence structures, and
-              prepare for professional communication.
-            </p>
-          </div>
-          <div class="service-card">
-            <h3>Exam Preparation</h3>
-            <p>
-              Targeted practice for Goethe-Zertifikat, and telc exams to ensure
-              you pass with confidence.
-            </p>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Welcome! I am a passionate and certified German language instructor
+        with a focus on helping students achieve fluency naturally and
+        effectively. Whether you are learning for personal interest, academic
+        purposes, or planning a trip, I tailor my teaching approach to suit
+        your individual learning style and pace.
+      </p>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="highlight-icon">🎓</span>
+          <div>
+            <strong>Grünes Diplom</strong>
+            <p>Official Goethe-Institut teaching certification</p>
           </div>
         </div>
-      </section>
+        <div class="highlight-item">
+          <span class="highlight-icon">🌍</span>
+          <div>
+            <strong>Global Students</strong>
+            <p>Online lessons across all time zones & in-person in Salzburg</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎯</span>
+          <div>
+            <strong>Tailored Curriculum</strong>
+            <p>Customized pace for exams, career, or casual fluency</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section id="contact">
-        <h2>Get in Touch</h2>
-        <p>
-          Ready to start your German learning journey? Contact me today to
-          schedule a trial lesson and discuss your goals.
+    <section id="services">
+      <h2>Language Lessons</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-tag">A1 - A2</div>
+          <h3>Beginner</h3>
+          <p>
+            Build a strong foundation in grammar, essential vocabulary, and
+            everyday conversational skills.
+          </p>
+          <a href="#register" class="service-link">Choose Beginner &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="service-tag">B1 - B2</div>
+          <h3>Intermediate</h3>
+          <p>
+            Enhance your fluency, master complex sentence structures, and
+            prepare for professional communication.
+          </p>
+          <a href="#register" class="service-link">Choose Intermediate &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="service-tag">Goethe / telc</div>
+          <h3>Exam Preparation</h3>
+          <p>
+            Targeted practice for Goethe-Zertifikat, and telc exams to ensure
+            you pass with confidence.
+          </p>
+          <a href="#register" class="service-link">Choose Exam Prep &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="register" class="registration-section">
+      <div class="section-header">
+        <span class="section-badge">Get Started</span>
+        <h2>Tutoring Registration & Consultation</h2>
+        <p class="section-intro">
+          Please fill out this form to request your lessons. Providing your location and schedule preferences helps
+          coordinate time zones, and confirming the hourly rate ensures we are aligned before scheduling our trial
+          session.
         </p>
-        <ul class="contact-info">
-          <li><strong>Email:</strong> reema.castillo.goethe@gmail.com</li>
-          <!-- <li><strong>Phone:</strong> +49 123 456 789</li> -->
-          <li>
-            <strong>Location:</strong> Salzburg, Austria (Available for
-            In-Person & Online lessons)
-          </li>
-        </ul>
-      </section>
-    </div>
+      </div>
 
-    <footer>
-      <p>&copy; 2026 Reema Castillo. All rights reserved.</p>
-    </footer>
-  </body>
+      <form id="tutoring-registration-form" novalidate>
+        <!-- Step 1: Personal Details & Country -->
+        <div class="form-block">
+          <h3 class="form-block-title">
+            <span class="step-num">1</span> Student Information & Location
+          </h3>
+
+          <div class="form-row two-cols">
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. Maria Müller" required />
+              <span class="field-error" id="fullNameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="e.g. maria@example.com" required />
+              <span class="field-error" id="emailError"></span>
+            </div>
+          </div>
+
+          <div class="form-row two-cols">
+            <div class="form-group">
+              <label for="country">Country of Location <span class="required">*</span></label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Austria">Austria</option>
+                <option value="Germany">Germany</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="India">India</option>
+                <option value="Singapore">Singapore</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option disabled>──────────</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Chile">Chile</option>
+                <option value="China">China</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Czech Republic">Czech Republic</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Greece">Greece</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Japan">Japan</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Norway">Norway</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Romania">Romania</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Korea">South Korea</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Taiwan">Taiwan</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Other">Other (specify in notes)</option>
+              </select>
+              <div class="field-hint" id="detectedTimezoneHint">
+                <span class="hint-icon">🕒</span> Detected Timezone: <span id="userTimezoneDisplay">Detecting...</span>
+              </div>
+              <span class="field-error" id="countryError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+43 123 456789 (with country code)" />
+              <div class="field-hint">Optional, useful for quick scheduling confirmations.</div>
+            </div>
+          </div>
+
+          <div class="form-row two-cols">
+            <div class="form-group">
+              <label for="currentLevel">Current German Level <span class="required">*</span></label>
+              <select id="currentLevel" name="currentLevel" required>
+                <option value="" disabled selected>Select your current level</option>
+                <option value="Beginner (A1) - No prior knowledge">Beginner (A1) </option>
+                <option value="Elementary (A2) - Basic conversation">Elementary (A2) </option>
+                <option value="Intermediate (B1) - Independent user">Intermediate (B1) </option>
+                <option value="Upper Intermediate (B2) - Fluent conversation">Upper Intermediate (B2) </option>
+                <option value="Exam Preparation (Goethe / telc)">Exam Preparation (Goethe / telc)</option>
+              </select>
+              <span class="field-error" id="currentLevelError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="lessonFormat">Preferred Lesson Mode <span class="required">*</span></label>
+              <select id="lessonFormat" name="lessonFormat" required>
+                <option value="Online (Zoom)" selected>Online (Zoom)</option>
+                <option value="In-Person (Salzburg, Austria)">In-Person (Salzburg, Austria)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 2: Preferred Schedule -->
+          <div class="form-block">
+            <h3 class="form-block-title">
+              <span class="step-num">2</span> Preferred Schedule & Availability
+            </h3>
+            <p class="form-block-desc">
+              Select which days and time slots work best for you. Lessons are scheduled based on mutual availability.
+            </p>
+
+            <div class="form-group">
+              <label>Preferred Days of the Week <span class="required">*</span> <span class="label-sub">(Select all that
+                  apply)</span></label>
+              <div class="day-selector" id="daySelector">
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Monday" />
+                  <span>Mon</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Tuesday" />
+                  <span>Tue</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Wednesday" />
+                  <span>Wed</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Thursday" />
+                  <span>Thu</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Friday" />
+                  <span>Fri</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Saturday" />
+                  <span>Sat</span>
+                </label>
+                <label class="day-chip">
+                  <input type="checkbox" name="preferredDays" value="Sunday" />
+                  <span>Sun</span>
+                </label>
+              </div>
+              <span class="field-error" id="preferredDaysError"></span>
+            </div>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="preferredTimeOfDay">Preferred Time of Day <span class="required">*</span></label>
+                <select id="preferredTimeOfDay" name="preferredTimeOfDay" required>
+                  <option value="" disabled selected>Select preferred time window</option>
+                  <option value="Mornings (08:00 - 12:00 CET)">Mornings (08:00 - 12:00 CET)</option>
+                  <option value="Afternoons (12:00 - 17:00 CET)">Afternoons (12:00 - 17:00 CET)</option>
+                  <option value="Evenings (18:00 - 21:00 CET)">Evenings (18:00 - 21:00 CET)</option>
+                </select>
+                <span class="field-error" id="preferredTimeError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="lessonFrequency">Lesson Frequency <span class="required">*</span></label>
+                <select id="lessonFrequency" name="lessonFrequency" required>
+                  <option value="1" selected>Once a week </option>
+                  <option value="2">2x / week </option>
+                  <option value="3">3x / week </option>
+                  <option value="4">4x / week </option>
+                  <option value="5">5x / week </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row two-cols">
+              <div class="form-group">
+                <label for="startDate">Target Start Date</label>
+                <input type="date" id="startDate" name="startDate" />
+                <div class="field-hint">When would you like to start your lessons?</div>
+              </div>
+              <div class="form-group">
+                <label for="durationPreference">Preferred Lesson Length</label>
+                <select id="durationPreference" name="durationPreference">
+                  <option value="1 hour" selected>1 hour</option>
+                  <option value="2 hours">2 hours</option>
+                  <option value="3hours">3 hours</option>
+                  <option value="4hours">4 hours</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Hourly Rate & Agreement -->
+          <div class="form-block rate-block">
+            <h3 class="form-block-title">
+              <span class="step-num">3</span> Hourly Rate & Financial Agreement
+            </h3>
+
+            <div class="rate-card-banner">
+              <div class="rate-badge-pill">Standard Tutoring Rate</div>
+              <div class="rate-amount-display">
+                <span class="currency">PHP</span><span class="rate-number">1500</span><span
+                  class="rate-unit">/hour</span>
+              </div>
+              <p class="rate-description">
+                Includes individualized lesson preparation, Goethe-standard teaching materials, homework correction, and
+                ongoing progress tracking.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="rate-question-label">
+                Are you amenable to the tutoring hourly rate? <span class="required">*</span>
+              </label>
+
+              <div class="rate-options-grid">
+                <label class="rate-option-card">
+                  <input type="radio" name="rateAmenability" value="Yes, fully amenable to PHP1500/hr" checked
+                    required />
+                  <div class="option-content">
+                    <span class="option-icon">✅</span>
+                    <div class="option-text">
+                      <strong>Yes, I am amenable to the standard hourly rate (PHP1500/hr)</strong>
+                      <p>Ready to proceed with individual hourly billing per session, weekly or monthly invoicing.</p>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="rate-option-card">
+                  <input type="radio" name="rateAmenability" value="Yes, interested in multi-lesson package discount" />
+                  <div class="option-content">
+                    <span class="option-icon">📦</span>
+                    <div class="option-text">
+                      <strong>Yes, and interested in multi-lesson packages</strong>
+                      <p>Amenable to the rate, but would like to inquire about 10-lesson bundled packages.</p>
+                    </div>
+                  </div>
+                </label>
+
+
+              </div>
+              <span class="field-error" id="rateAmenabilityError"></span>
+            </div>
+          </div>
+
+          <!-- Step 4: Learning Goals & Additional Info -->
+          <div class="form-block">
+            <h3 class="form-block-title">
+              <span class="step-num">4</span> Learning Goals & Background
+            </h3>
+
+            <div class="form-group">
+              <label for="goals">Your Learning Goals & Focus Areas</label>
+              <textarea id="goals" name="goals" rows="4"
+                placeholder="What are your main goals? (e.g., preparing for Goethe B1 exam in 3 months, relocating to Austria/Germany, practicing conversational speaking, overcoming grammar hurdles...)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="additionalNotes">Any Questions or Special Requests?</label>
+              <input type="text" id="additionalNotes" name="additionalNotes"
+                placeholder="e.g. Any specific learning materials you already use, time constraints, etc." />
+            </div>
+          </div>
+
+          <!-- Form Action Footer -->
+          <div class="form-actions">
+            <button type="submit" id="submitBtn" class="btn-primary">
+              <span class="btn-text">Submit Registration Request</span>
+              <span class="btn-arrow">&rarr;</span>
+            </button>
+            <p class="form-disclaimer">
+              🔒 Your contact information is kept strictly confidential and only used to coordinate your German lessons.
+            </p>
+          </div>
+      </form>
+
+      <!-- Submission Success Modal / Feedback Card -->
+      <div id="confirmationModal" class="confirmation-modal" hidden>
+        <div class="modal-card">
+          <div class="modal-icon">🎉</div>
+          <h3>Registration Request Received!</h3>
+          <p class="modal-lead">
+            Thank you, <span id="confirmName">Student</span>! Your inquiry has been recorded.
+          </p>
+
+          <div class="summary-box">
+            <h4>Registration Summary:</h4>
+            <ul id="summaryList">
+              <!-- Dynamically populated via JS -->
+            </ul>
+          </div>
+
+          <p class="modal-next-steps">
+            Reema will review your schedule and location preferences, and contact you at <strong
+              id="confirmEmail"></strong> as soon as possible to confirm your first lesson.
+          </p>
+
+          <div class="modal-actions">
+            <button type="button" id="copySummaryBtn" class="btn-secondary">
+              📋 Copy Summary
+            </button>
+            <a id="emailDirectLink" href="#" class="btn-primary" target="_blank">
+              ✉️ Open in Email Client
+            </a>
+            <button type="button" id="closeModalBtn" class="btn-text-action">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3> Ready to start your German learning journey?</h3>
+      <p>
+        Use the registration form above to schedule
+        a lesson and discuss your goals.
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Reema Castillo. Certified German Teacher. All rights reserved.</p>
+  </footer>
+</body>
+
 </html>
