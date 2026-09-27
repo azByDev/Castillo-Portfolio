@@ -436,6 +436,20 @@ textarea {
   transition: all var(--transition-fast);
 }
 
+textarea {
+  resize: vertical;
+  min-height: 110px;
+  max-height: 220px;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+#goals {
+  height: 130px;
+  min-height: 110px;
+  max-height: 220px;
+}
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
@@ -980,4 +994,24 @@ footer {
   .modal-actions .btn-text-action {
     width: 100%;
   }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px; /* Prevents iOS Safari auto-zoom shifting */
+  }
+
+  /* Stabilize goals textarea on mobile */
+  #goals,
+  textarea {
+    resize: none; /* Prevents erratic touchscreen resizing/dragging */
+    height: 125px;
+    min-height: 110px;
+    max-height: 180px;
+    line-height: 1.45;
+  }
 }
+

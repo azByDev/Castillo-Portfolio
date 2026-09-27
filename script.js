@@ -297,3 +297,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize estimate on load
   updateEstimate();
 });
+
