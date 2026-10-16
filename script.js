@@ -1,7 +1,9 @@
 // Wait for the HTML document to fully load before running the script
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Smooth scrolling for internal anchors
-  const scrollLinks = document.querySelectorAll('nav a, .service-link, a[href^="#"]:not(#emailDirectLink)');
+  const scrollLinks = document.querySelectorAll(
+    'nav a, .service-link, a[href^="#"]:not(#emailDirectLink)',
+  );
   scrollLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       const targetId = this.getAttribute("href");
@@ -89,6 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 4. Form Validation & Submission
   const form = document.getElementById("tutoring-registration-form");
   const modal = document.getElementById("confirmationModal");
+  const formStatus = document.getElementById("formStatus");
+  const submitBtn = document.getElementById("submitBtn");
   const closeModalBtn = document.getElementById("closeModalBtn");
   const copySummaryBtn = document.getElementById("copySummaryBtn");
   const emailDirectLink = document.getElementById("emailDirectLink");
@@ -99,14 +103,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastSubmissionText = "";
 
   function clearErrors() {
-    document.querySelectorAll(".field-error").forEach((el) => (el.textContent = ""));
-    document.querySelectorAll(".error-border").forEach((el) => el.classList.remove("error-border"));
+    document
+      .querySelectorAll(".field-error")
+      .forEach((el) => (el.textContent = ""));
+    document
+      .querySelectorAll(".error-border")
+      .forEach((el) => el.classList.remove("error-border"));
   }
 
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       clearErrors();
+      formStatus.textContent = "";
 
       let isValid = true;
       let firstErrorField = null;
@@ -114,7 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Full Name Validation
       const fullName = document.getElementById("fullName");
       if (!fullName.value.trim()) {
-        document.getElementById("fullNameError").textContent = "Please enter your full name.";
+        document.getElementById("fullNameError").textContent =
+          "Please enter your full name.";
         fullName.classList.add("error-border");
         isValid = false;
         firstErrorField = firstErrorField || fullName;
@@ -124,7 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email");
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
-        document.getElementById("emailError").textContent = "Please provide a valid email address.";
+        document.getElementById("emailError").textContent =
+          "Please provide a valid email address.";
         email.classList.add("error-border");
         isValid = false;
         firstErrorField = firstErrorField || email;
@@ -133,7 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Country of Location Validation
       const country = document.getElementById("country");
       if (!country.value) {
-        document.getElementById("countryError").textContent = "Please select your country of location.";
+        document.getElementById("countryError").textContent =
+          "Please select your country of location.";
         country.classList.add("error-border");
         isValid = false;
         firstErrorField = firstErrorField || country;
@@ -142,7 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Current German Level Validation
       const currentLevel = document.getElementById("currentLevel");
       if (!currentLevel.value) {
-        document.getElementById("currentLevelError").textContent = "Please choose your current German level.";
+        document.getElementById("currentLevelError").textContent =
+          "Please choose your current German level.";
         currentLevel.classList.add("error-border");
         isValid = false;
         firstErrorField = firstErrorField || currentLevel;
@@ -150,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Preferred Days Validation (at least one checkbox checked)
       const selectedDays = Array.from(
-        document.querySelectorAll('input[name="preferredDays"]:checked')
+        document.querySelectorAll('input[name="preferredDays"]:checked'),
       ).map((el) => el.value);
 
       if (selectedDays.length === 0) {
@@ -158,7 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
           "Please pick at least one preferred day of the week.";
         isValid = false;
         if (!firstErrorField) {
-          const firstDay = document.querySelector('input[name="preferredDays"]');
+          const firstDay = document.querySelector(
+            'input[name="preferredDays"]',
+          );
           firstErrorField = firstDay;
         }
       }
@@ -174,11 +189,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Rate Amenability Validation
-      const rateSelected = document.querySelector('input[name="rateAmenability"]:checked');
+      const rateSelected = document.querySelector(
+        'input[name="rateAmenability"]:checked',
+      );
       if (!rateSelected) {
         document.getElementById("rateAmenabilityError").textContent =
           "Please select whether you are amenable to the hourly rate.";
         isValid = false;
+        firstErrorField = firstErrorField || rateSelected;
       }
 
       if (!isValid) {
@@ -188,16 +206,30 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      const accessKey = form.elements.access_key.value.trim();
+      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        formStatus.textContent =
+          "This form is not connected yet. Add your Web3Forms access key to the form configuration.";
+        return;
+      }
+
       // Form Data extraction
-      const phone = document.getElementById("phone").value.trim() || "Not provided";
+      const phone =
+        document.getElementById("phone").value.trim() || "Not provided";
       const lessonFormat = document.getElementById("lessonFormat").value;
       const lessonFrequencyText =
         frequencySelect.options[frequencySelect.selectedIndex].text;
-      const startDate = document.getElementById("startDate").value || "Flexible / As soon as possible";
+      const startDate =
+        document.getElementById("startDate").value ||
+        "Flexible / As soon as possible";
       const durationPref = document.getElementById("durationPreference").value;
-      const goals = document.getElementById("goals").value.trim() || "None specified";
-      const notes = document.getElementById("additionalNotes").value.trim() || "None";
-      const detectedTz = document.getElementById("userTimezoneDisplay").textContent;
+      const goals =
+        document.getElementById("goals").value.trim() || "None specified";
+      const notes =
+        document.getElementById("additionalNotes").value.trim() || "None";
+      const detectedTz = document.getElementById(
+        "userTimezoneDisplay",
+      ).textContent;
 
       // Populate summary modal
       confirmName.textContent = fullName.value.trim();
@@ -221,27 +253,62 @@ document.addEventListener("DOMContentLoaded", () => {
         { label: "Additional Notes", value: notes },
       ];
 
+      const submissionData = new FormData(form);
+      submissionData.set(
+        "subject",
+        `Tutoring Registration: ${fullName.value.trim()} (${country.value}) - ${currentLevel.value}`,
+      );
+      submissionData.set("from_name", fullName.value.trim());
+      submissionData.set("user_timezone", detectedTz);
+
+      const submitText = submitBtn.querySelector(".btn-text");
+      submitBtn.disabled = true;
+      submitText.textContent = "Sending...";
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: submissionData,
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "The inquiry could not be sent.");
+        }
+      } catch (error) {
+        formStatus.textContent =
+          error.message ||
+          "Your inquiry could not be sent. Please try again in a moment.";
+        return;
+      } finally {
+        submitBtn.disabled = false;
+        submitText.textContent = "Submit Registration Request";
+      }
+
       summaryList.innerHTML = summaryItems
         .map(
           (item) =>
-            `<li><strong>${item.label}:</strong> <span>${escapeHtml(item.value)}</span></li>`
+            `<li><strong>${item.label}:</strong> <span>${escapeHtml(item.value)}</span></li>`,
         )
         .join("");
 
       // Prepare text for copying and for mailto
-      lastSubmissionText = `=== GERMAN TUTORING REGISTRATION ===\n` +
+      lastSubmissionText =
+        `=== GERMAN TUTORING REGISTRATION ===\n` +
         summaryItems.map((item) => `${item.label}: ${item.value}`).join("\n");
 
       // Construct mailto link so user or tutor can easily send the inquiry
       const subject = encodeURIComponent(
-        `Tutoring Registration: ${fullName.value.trim()} (${country.value}) - ${currentLevel.value}`
+        `Tutoring Registration: ${fullName.value.trim()} (${country.value}) - ${currentLevel.value}`,
       );
       const body = encodeURIComponent(
         `Hello Reema,\n\nI would like to register for German tutoring lessons. Here are my details and schedule preferences:\n\n` +
-          summaryItems.map((item) => `• ${item.label}: ${item.value}`).join("\n") +
-          `\n\nLooking forward to hearing from you!\n\nBest regards,\n${fullName.value.trim()}`
+          summaryItems
+            .map((item) => `• ${item.label}: ${item.value}`)
+            .join("\n") +
+          `\n\nLooking forward to hearing from you!\n\nBest regards,\n${fullName.value.trim()}`,
       );
-      emailDirectLink.href = `mailto:reema.castillo.goethe@gmail.com?subject=${subject}&body=${body}`;
+      emailDirectLink.href = `mailto:deutschamabend@gmail.com?subject=${subject}&body=${body}`;
 
       // Open modal
       modal.removeAttribute("hidden");
@@ -297,4 +364,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize estimate on load
   updateEstimate();
 });
-
