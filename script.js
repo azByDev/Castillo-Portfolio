@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Smooth scrolling for internal anchors
   const scrollLinks = document.querySelectorAll(
-    'nav a, .service-link, a[href^="#"]:not(#emailDirectLink)',
+    'nav a, .service-link, a[href^="#"]',
   );
   scrollLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -94,13 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const formStatus = document.getElementById("formStatus");
   const submitBtn = document.getElementById("submitBtn");
   const closeModalBtn = document.getElementById("closeModalBtn");
-  const copySummaryBtn = document.getElementById("copySummaryBtn");
-  const emailDirectLink = document.getElementById("emailDirectLink");
   const summaryList = document.getElementById("summaryList");
   const confirmName = document.getElementById("confirmName");
   const confirmEmail = document.getElementById("confirmEmail");
-
-  let lastSubmissionText = "";
 
   function clearErrors() {
     document
@@ -292,24 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
         )
         .join("");
 
-      // Prepare text for copying and for mailto
-      lastSubmissionText =
-        `=== GERMAN TUTORING REGISTRATION ===\n` +
-        summaryItems.map((item) => `${item.label}: ${item.value}`).join("\n");
-
-      // Construct mailto link so user or tutor can easily send the inquiry
-      const subject = encodeURIComponent(
-        `Tutoring Registration: ${fullName.value.trim()} (${country.value}) - ${currentLevel.value}`,
-      );
-      const body = encodeURIComponent(
-        `Hello Reema,\n\nI would like to register for German tutoring lessons. Here are my details and schedule preferences:\n\n` +
-          summaryItems
-            .map((item) => `• ${item.label}: ${item.value}`)
-            .join("\n") +
-          `\n\nLooking forward to hearing from you!\n\nBest regards,\n${fullName.value.trim()}`,
-      );
-      emailDirectLink.href = `mailto:deutschamabend@gmail.com?subject=${subject}&body=${body}`;
-
       // Open modal
       modal.removeAttribute("hidden");
       modal.focus();
@@ -331,22 +309,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.setAttribute("hidden", "true");
-      }
-    });
-  }
-
-  // Copy Summary button
-  if (copySummaryBtn) {
-    copySummaryBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(lastSubmissionText);
-        const originalText = copySummaryBtn.innerHTML;
-        copySummaryBtn.innerHTML = "✅ Copied to Clipboard!";
-        setTimeout(() => {
-          copySummaryBtn.innerHTML = originalText;
-        }, 2500);
-      } catch (err) {
-        alert("Summary copied to clipboard!");
       }
     });
   }
